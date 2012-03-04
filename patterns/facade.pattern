@@ -1,0 +1,30 @@
+NAME
+Facade
+END
+
+DESC
+Provide a unified interface to a set of interfaces in a subsystem. Facade defines
+a higher-level interface that makes the subsystem easier to use.
+
+Pretty straightforward. When you're working with lower-level libraries, you can
+create a simpler, higher-level interface via a Facade.
+
+Users can still use the lower-level objects if needed.
+END
+
+DIAGRAM
+                                 +------+
+                                 |Facade|
+                                 +------+
+                                     |
+ +---------------------------------  |  ---------------------------------+
+ |                                   |                                   |
+ |     Lots of object          <-----+----->        Lots of objects      |
+ |                                  /|\                                  |
+ |                                 / | \                                 |
+ |                                /  |  \                                |
+ |                                                                       |
+ |                          Even More objects                            |
+ |                                                                       |
+ +-----------------------------------------------------------------------+
+END

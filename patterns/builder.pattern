@@ -1,0 +1,29 @@
+NAME
+Builder
+END
+
+DESC
+Separate the construction of a complex object from its representation so the 
+same construction process can create different representations.
+
+You'll have a Director object that constructs something. It does this by 
+following a set of steps. Each step may involve calling one of the Builder's
+functions.
+
+Then you'll have a Builder class hierarchy. Each subclass defines pure virtual
+functions so that it can complete each step in a different fashion, or return
+a different part
+END
+
+DIAGRAM
+Director    ------(has)----->  Builder
+-----------                    -----------
+Construct()                    BuildPart()
+    .                               |
+    .                               |
+    .                               |
+For all parts                  ConcreteBuilder  --(makes)-->  Product
+  builder->BuildPart()         ---------------
+end                            BuildPart()
+                               GetResult() ??
+END

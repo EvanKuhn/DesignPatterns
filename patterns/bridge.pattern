@@ -1,0 +1,36 @@
+NAME
+Bridge
+END
+
+DESC
+Decouple an abstraction from its implementation so that the two can vary
+independently.
+
+Sometimes an abstraction can have multiple implementations. We usually use 
+inheritance to handle this case, but inheritance binds an abstraction to its
+implementation.
+
+For example, if we have a GuiObject class hierarchy, and both Mac and Windows
+implementations.  We have M object types and N system types, leading to M*N
+subclasses.
+
+Instead, we can use the Bridge pattern:
+- Define a class hierarchy of GUI objects.
+- Each GUI object refers to an implementation class that handles the system's
+  graphics calls.
+- The GUI objects can use the Graphics object, not needing to know how the 
+  graphics functionality is implemented.
+END
+
+DIAGRAM
+   Abstraction  -------------(has a)-------------->  Implementor
+   -----------                                       ---------------
+   Operation()  ...... impl->OperationImpl()         OperationImpl()
+   impl                                                     |
+       |                                                    |
+       |                                         +----------+----------+
+       |                                         |                     |
+       |                                   ConcreteImpl2         ConcreteImpl2
+RefinedAbstraction                         ---------------       ---------------
+                                           OperationImpl()       OperationImpl()
+END

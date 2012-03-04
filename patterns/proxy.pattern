@@ -1,0 +1,43 @@
+NAME
+Proxy
+END
+
+DESC
+Provide a surrogate or placeholder for another object to control access to it and
+increase efficiency.
+
+Say you wanted to delay object creation, or perform caching, or save resources in
+some other way. A proxy can wrap around an existing object and help you do that.
+
+The proxy presents the same interface as the object so they can be used
+interchangeably. The two objects may even share the same base class to ensure a
+common interface.
+
+Types of proxies:
+
+  Remote Proxy
+    Provides a local representative for an object in a different process.
+
+  Virtual Proxy
+    Creates expensive objects on demand rather than upon proxy creation.
+
+  Protection Proxy
+    Controls access to the object (akin to file privs).
+
+  Smart Reference
+    This can: 1) load the objects on demand, 2) delete the object on destruction,
+    like a smart pointer, and/or 3) provide locking for synchronized access.
+
+END
+
+DIAGRAM
+Client  --------(uses)------->  Subject
+                                ----------
+                                Function()
+                                    |
+          +-------------------------+
+          |                         |
+     RealSubject                Proxy
+     -----------  <---(ref)---  ----------
+     Function()                 Function()  .......  realSubject->Function()
+END

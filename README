@@ -1,0 +1,12 @@
+A simple design-patterns quiz and review app.
+
+Design pattern descriptions are stored in the ./patterns directory as text files
+with a filename format of <pattern-name>.pattern. Each .pattern file contains:
+
+  - The pattern's name
+  - The pattern's description
+  - A diagram of the pattern's objects and their relationships
+
+Run the app to review patterns or quiz yourself.
+
+Evan Kuhn, 2011-08-12

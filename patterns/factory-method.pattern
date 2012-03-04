@@ -1,0 +1,26 @@
+NAME
+Factory Method
+END
+
+DESC
+Creator class has a virtual function that creates a Product. Creator subclasses
+create the proper Product subclass object.
+
+This pattern allows the Creator class to define functions that use a Product,
+even when the type of Product is unknown. Thus, the Product can take whatever
+form the Creator subclass needs.
+END
+
+DIAGRAM
+                             Creator
+                             -------------
+                             MakeProduct()            ...
+    Product                  AnOperation()   .......  product = MakeProduct()
+       |                         |                    ...
+       |                         |
+       |                         |
+ConcreteProduct <--(makes)-- ConcreteCreator
+                             ---------------          ...
+                             MakeProduct()   .......  return new ConcreteProduct
+                                                      ...
+END

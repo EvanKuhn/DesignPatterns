@@ -1,0 +1,37 @@
+NAME
+Abstract Factory
+END
+
+
+DESC
+Provide an interface for creating families of related or dependent objects 
+without specifying their concrete classes.
+
+There are two class hierarchies:
+
+1) A Factory class hierarchy, where each subclass defines the creation functions
+   and returns the concrete Product classes.
+2) One or more Product class hierarchies. Each Factory subclass will return the
+   proper subclass of the Product.
+
+For example, in a GUI component factory, we might have
+
+1) WinComponentFactory, MacComponentFactory
+2) Button abstract class, with subclasses WinButton and MacButton
+3) TextBox abstract class, with subclasses WinTextBox and MacTextBox
+END
+
+
+DIAGRAM
+               AbstractFactory   <-------------(refers)------------ Client
+               ----------------                                        |
+               CreateProductA()                   AbstractProductA  <--+
+               CreateProductB()                   +- ProductA1         |
+                      |                           +- ProductA2         |
+          +-----------+-----------+                                    |
+          |                       |                                    |
+  ConcreteFactory1        ConcreteFactory2        AbstractProductB  <--+
+  ----------------        ----------------        +- ProductB1          
+  CreateProductA()        CreateProductA()        +- ProductB2          
+  CreateProductB()        CreateProductB()                              
+END

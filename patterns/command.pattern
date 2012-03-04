@@ -1,0 +1,29 @@
+NAME
+Command
+END
+
+DESC
+Encapsulate a request as an object, thereby letting you parameterize clients with
+different requests, queue or log requests, and support undoable operations.
+
+Commands are the object-oriented equivalent of a callback function.
+
+Functionality:
+- Greater flexibility to customize a command via parameters or inheritance.
+- Specify, queue, and execute requests at different times.
+- Support undo by having the command object store some state so it can reverse
+  the actions it took.
+- Support Transactions (multiple sub-commands per command).
+END
+
+DIAGRAM
+Client  --------->  Invoker  --------->  Command
+                                         ---------
+                                         Execute()
+                                            |
+                                            |
+             Receiver                  RealCommand
+             --------  <----(ref)----  -----------
+             Action()                  Execute()  ......... receiver->Action()
+                                       state
+END

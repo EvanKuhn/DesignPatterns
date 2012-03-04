@@ -1,0 +1,46 @@
+NAME
+Decorator
+END
+
+DESC
+Attach additional responsibilities to an object dynamically. Decorators provide a
+flexible alternative to subclassing for extending functionality.
+
+Sometimes we want to add functionality to individual objects rather than all
+objects of a given class.  While we typically add functionality through
+inheritance, that affects all objects. The Decorator adds functionality to an
+individual object by presenting the same interface as the wrapped object, 
+forwarding calls to that object, and adding extra functionality where needed.
+
+For example, say we have a Window class.  We want to add a scroll bar to some
+windows, so we create a ScrollBar decorator that we wrap around certain Window
+objects.
+
+Applicability
+- Adds responsibilities to individual objects dynamically and transparently (that
+  is, without affecting other objects)
+- Can add responsibilities that can be withdrawn later.
+- Good when extension by subclassing is impractical. For example when many
+  combinations of responsibilities would produce an explosion of subclasses.
+  Where N decorators can produce N! combinations, we would need N! subclasses.
+END
+
+DIAGRAM
+            Component    <------------+
+            -----------               |
+            Operation()               | 
+                 |                    |
+      +----------+----------+       (ref)
+      |                     |         |
+RealComponent          Decorator      |
+-------------          -----------  --+
+Operation()            Operation()  ...................  component->Operation()
+                       component
+                            |
+                 +----------+----------+
+                 |                     |
+          RealDecoratorA        RealDecoratorB
+          --------------        --------------
+          Operation()           Operation()     .......  Decorator::Operation()
+          addedState            AddedBehavior()          AddedBehavior()
+END

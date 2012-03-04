@@ -1,0 +1,38 @@
+NAME
+Chain of Responsibility
+END
+
+DESC
+Avoid coupling the sender of a request to its receiver by giving more than one
+object a chance to handle the request. Chain the receiving objects and pass the
+request along the chain until an object handles it.
+
+Make a chain of objects, all of which have a function to handle an action. When
+an action is performed (say, clicking a button), the action is given to the first
+object in the chain. This object represents the most-specific object, such as the
+button iteself or the dialog containing it. Each object can either handle the
+action and return, or pass the action along. Eventually either a more generic
+handler handles the action, or no handler does.
+
+Example:  PrintButton --> PrintDialog --> Appplication
+
+Applicability:
+- When more than one object may handle the request, and the handler isn't known
+  at compile time.
+- When you want to issue a request to one of many objects without specifying the
+  receiver explicitly.
+- When the set of objects that can handle a request is specified dynamically.
+END
+
+DIAGRAM
+Client  -----(uses)----->     Handler      <---+
+                           --------------      | (ref)
+                           Handle(action)  ----+
+                           successor*
+                                 |
+                       +---------+---------+
+                       |                   |
+                 RealHandler1        RealHandler2
+                --------------      --------------
+                Handle(action)      Handle(action)
+END

@@ -1,0 +1,46 @@
+NAME
+Composite
+END
+
+DESC
+Compose objects into tree structures to represent part-whole hierarchies. 
+Composite lets clients treat individual objects and compositions of objects 
+uniformly.
+
+For example, a graphics library where graphics can be composed recursively of
+other graphics.  You can build a gree where each node is a Composite graphics
+object. You can call a common function, like draw(), or move to the child nodes.
+
+Applicability
+- You want to represent part-whole hierarchies of objects.
+- You want clients to be able to ignore the difference between compositions of
+  objects and individual objects. Clients will treat all objects in the composite
+  structure uniformly.
+
+You'll have to think about how to handle child operations in leaves, since leaves
+cannot have children. Do you define a different Leaf class, or just ignore child
+operations? There are tradeoffs.  Either deal with two interfaces instead of one,
+or catch leaf-child operation errors at run time.
+END
+
+DIAGRAM
+Client  -----(uses)----->  Component
+                           -----------------
+                           Operation()
+                           Add(Component)
+                           Remove(Component)
+                           GetChild(int)
+                                  |
+                          +-------+-------+
+                          |               |
+                        Leaf         Composite
+                    -----------      -----------------        for all children {
+                    Operation()      Operation()        ....    c.Ooperation()
+                                     Add(Component)           }
+                                     Remove(Component)
+                                     GetChild(int)
+
+
+NOTE: You may or may not want the Leaf class depending on how/where you want to
+      handle child ops from leaves.
+END

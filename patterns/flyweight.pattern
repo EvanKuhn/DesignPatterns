@@ -1,0 +1,49 @@
+NAME
+Flyweight
+END
+
+DESC
+Use sharing to support large numbers of fine-grained objects efficiently.
+
+A Flyweight is a shared object that can act in multiple contexts simultaneously.
+Sharing means we don't need multiple copies of the same object.
+
+Each Flyweight has:
+- Intrinsic state, which is the same in every context.
+- Extrinsic state, which is passed in based on the context.
+
+For example, you could store Character objects as flyweights, so rather than 
+store thousands or millions of Character objects with different data, you just
+point to the shared Flyweight Character objects and pass in the extrinsic state
+based on context.
+
+Applicability:
+- When you have a large number of objects.
+- Storage costs are high because of sheer quantity of objects.
+- Object state can be stored externally.
+- You can replace different objects with shared ones.
+END
+
+DIAGRAM
+FlyweightFactory                                        Flyweight
+-----------------  ------------(has many)------------>  ----------------
+GetFlyweight(key)                                       Operation(state)
+       ^       .                                              |
+       |       .                                              |
+       |       .                                              |
+       |       if(flyweight[key] exists)                      |
+       |         return object                                |
+       |       else                                           |
+       |         create new object                            |
+       |         store it and return it                       |
+       |       end                        +-------------------+-----+
+       |                                  |                         |
+       |
+     (uses)                         RealFlyweight           UnsharedRealFlyweight
+       |                            ----------------        ---------------------
+       |                            Operation(state)        Operation(state)
+       |                            intrinsicState          intrinsicState
+       |                                  ^                         ^
+       |                                  |                         |
+     Client  -----------(uses)------------+-------------------------+
+END

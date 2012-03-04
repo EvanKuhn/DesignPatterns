@@ -1,0 +1,32 @@
+NAME
+Adapter
+END
+
+DESC
+Convert the interface of a class into another interface clients expect. Adapter
+lets classes work together that couldn't otherwise because of incompatible
+interfaces.
+
+For example, if you have multiple drawing libraries with different interfaces.
+To create a unified drawing library that can easily switch between the two, you
+can wrap each library behind adapters that, for example, might be subclasses of
+your unified library classes.
+
+Applicability
+- When you want to use an existing class but its interface is not what you need.
+END
+
+DIAGRAM
+
+Client  ----->  Target         +--->  Adaptee
+                ---------      |      -----------------
+                Request()      |      SpecificRequest()
+                   |           |
+                   |           |
+                   |           |
+                Adapter    ----+
+                ---------
+                Request()  .........  adaptee->SpecificRequest()
+
+NOTE: the Adapter can refer to or subclass the Adaptee
+END

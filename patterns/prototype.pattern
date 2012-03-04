@@ -1,0 +1,25 @@
+NAME
+Prototype
+END
+
+DESC
+Specify the kinds of objects to create using a prototypical instance, and create 
+new objects by copying this prototype.
+
+- Avoids the need for building a class hierarchy.
+- Useful when instances are specified at run time.
+- Useful when there are many combinations of instances that can be set up via
+  constructor params or setter functions.
+END
+
+DIAGRAM
+      Client                                Prototype
+    -----------  ----------(ref)--------->  ----------
+    Operation()                             Clone()
+        .                                      |
+        .                           +----------+-----------+
+        .                           |                      |
+p = prototype->clone()      ConcretePrototype1     ConcretePrototype2
+                            ------------------     ------------------
+                            Clone()                Clone()
+END
